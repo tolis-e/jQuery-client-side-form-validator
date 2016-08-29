@@ -11,36 +11,37 @@
 ```js
 // validator regular experssions needed to validate text fields
 var settings = {
-	regex: {
-		email: /^[\w-]+([^@,\s<\>\(\)]*[\w-]+)?\@[\w-]+(\.[\w-]+)*\.[a-z]{2,}$/i,
-		notEmpty: /\S+/
-	}
-},
-formValidator = new app.util.FormValidator( settings ),
-//describes form validation specifications
-formSpecs = {
-	'#correct-email': {
-		type: 'text',
-		rules: [{
-				type: 'notEmpty',
-				errMsg: 'Empty text!'
-			},{
-				type: 'email',
-				errMsg: 'Wrong email format!'
-			},
-		]
+		regex: {
+			email: /^[\w-]+([^@,\s<\>\(\)]*[\w-]+)?\@[\w-]+(\.[\w-]+)*\.[a-z]{2,}$/i,
+			notEmpty: /\S+/
+		}
 	},
-	'#checkbox-checked': {
-		type: 'checkbox',
-		errMsg: 'Not selected checkbox!'
-	}
-},
-successHandler = function (formSpecs) {
-	//do something
-},
-errorHandler = function (failedFormSpecs) {
-	//do something
-};
+	formValidator = new app.util.FormValidator( settings ),
+	//describes form validation specifications
+	formSpecs = {
+		'#correct-email': {
+			type: 'text',
+			rules: [{
+					type: 'notEmpty',
+					errMsg: 'Empty text!'
+				},{
+					type: 'email',
+					errMsg: 'Wrong email format!'
+				}
+			]
+		},
+		'#checkbox-checked': {
+			type: 'checkbox',
+			errMsg: 'Not selected checkbox!'
+		}
+	},
+	successHandler = function (formSpecs) {
+		//do something
+	},
+	errorHandler = function (failedFormSpecs) {
+		//do something
+	};
+	
 // validate form based on passsed form specs
 formValidator.validate( formSpecs ).done( successHandler ).fail( errorHandler );
 ```
