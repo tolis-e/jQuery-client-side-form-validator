@@ -21,7 +21,7 @@
   "keywords": [
     "jQuery Form Validator",
     "form",
-	"validation"
+    "validation"
   ],
   "devDependencies": {
     "grunt": "~0.4.5",
