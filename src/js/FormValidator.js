@@ -36,12 +36,14 @@
     }
 
     /**
-     Validates the passed specifications. Each spec should have a selector as key, and a value combined of type and rule properties. 
-     The type should be 'text' in case of input[type=text] or textarea, 'radio' in case of radio button group, 'select' in case of 
-     select box and 'checkbox' in case of checkbox group.  Each text rule is combined of type and errMsg. In case of 'text' based validations, 
-     the type value should match the key name of a given regex in FormValidator settings. In case of select boxes, radio buttons, checkboxes 
-     the rule property is omitted and a single errMsg is passed. The defaultValue property passed only in select box cases is needed to define 
-     the default select option which should not remain the same after the user's interaction.
+     Validates the passed specifications. All form specifications defining the validation rules, must have unique element selectors as property names e.g #email-field. 
+     Specification referring to text fields must have as property value the 'type' and 'rules' properties. The type property must have value equal to 'text'. The 'rules' 
+     property is an array of validation rules and each validation rule consists of 'type' and 'errMsg' properties. The type property should match the name of a regex key 
+     set in the FormValidator constructor. In cases of checkboxes and radio buttons validation the 'rules' property is not used. Only the 'type' and 'errMsg' properties 
+     are used in such cases. The 'type' property must have value equal to 'radio' in case of radio buttons and 'checkbox' in case of checkboxes. In case of select boxes 
+     the type property must have value equal to 'select'. Additionally, the specification must contain the 'defaultValue' property which defines the default value 
+     of the select box so that the library can understand whether the value has been changed or not. A detailed exmaple can be found below, as well as inside the unit 
+     tests file. 
      @param {Object} [specs={}] - the specifications to be validated
      @returns {Object} A jQuery Promise having as promise value the whole spec object in case of successful validation or the failed specs otherwise.
      @example
