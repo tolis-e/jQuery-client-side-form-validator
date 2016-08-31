@@ -1,7 +1,8 @@
 (function(global) {
 
     /**
-     The FormValidator is used to validate forms.
+     FormValidator is used to validate client side forms. It receives as input an object containing regular expressions which can be used to validate 'text' fields. 
+     It can also validate 'radio', 'checkbox' and 'select' elements. The library depends on jQuery.
      @status Experimental
      @param {Object} [settings={}] - the settings to configure the validator
      @param {Object} [settings.regex] - the regular expressions used to validate text based elements
