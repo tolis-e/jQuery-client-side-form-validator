@@ -12,11 +12,19 @@ module.exports = function(grunt) {
             }
         },
         qunit: {
-            formValidator: {
+            unit: {
                 files: [],
                 options: {
                     urls: [
                         "http://localhost:<%= connect.server.options.port %>/tests/unit/index.html"
+                    ]
+                }
+            },
+            integration: {
+                files: [],
+                options: {
+                    urls: [
+                        "http://localhost:<%= connect.server.options.port %>/tests/integration/index.html"
                     ]
                 }
             },
@@ -75,5 +83,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.registerTask('default', ['jshint', 'connect', 'qunit:formValidator', 'concat', 'uglify:all']);
+    grunt.registerTask('default', ['jshint', 'connect', 'qunit:unit', 'qunit:integration', 'concat', 'uglify:all']);
 };

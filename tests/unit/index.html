@@ -3,71 +3,13 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width">
-        <title>QUnit Example</title>
+        <title>FormValidator Unit Tests</title>
         <link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.0.1.css">
-		<style>
-			#hidden-form {
-				display: none;
-			}
-		</style>
     </head>
     <body>
         <div id="qunit"></div>
         <div id="qunit-fixture"></div>
-		
-		<form id="hidden-form">
-			<!-- Text begin -->
-			<div>    
-				<label for="email" class="hidden">Email</label>
-				<input name="email" type="text" id="empty-email" placeholder="Email">
-			</div>
-			<div>    
-				<label for="email" class="hidden">Email</label>
-				<input name="email" type="text" id="correct-email" placeholder="Email" value="tolisemm@gmail.com">
-			</div>
-			<div>    
-				<label for="email" class="hidden">Email</label>
-				<input name="email" type="text" id="wrong-email" placeholder="Email" value="tolisemm@@gmail.com">
-			</div>
-			<!-- Text end -->
-			<!-- Checkbox begin -->
-			<div>
-				<div class="checkbox-wrapper">
-					<input type="checkbox" id="checkbox-checked" value="CHECKED" checked> 
-					<input type="checkbox" id="checkbox-unchecked" value="UNCHECKED">
-				</div>
-			</div>
-			<!-- Checkbox end -->
-			<!-- Selectbox begin -->
-			<div>
-				<div>
-					<select id="selectbox-default-selected">
-						<option value="default">Select an option</option>
-						<option value="saab">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
-				</div>
-				<div>
-					<select id="selectbox-option-selected">
-						<option value="default">Select an option</option>
-						<option value="saab" selected="selected">Saab</option>
-						<option value="mercedes">Mercedes</option>
-						<option value="audi">Audi</option>
-					</select>
-				</div>
-			</div>
-			<!-- Selectbox end -->
-			<!-- Radio button group start-->
-			<div>
-				<input type="radio" name="radio-button-test" value="option-1">
-				<input type="radio" name="radio-button-test" value="option-2" checked>
-				<input type="radio" name="radio-button-test" value="option-3">
-			</div>
-			<!-- Radio button end -->
-		</form>
-		
-        <script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.1.0.min.js"></script>
 		<script src="https://code.jquery.com/qunit/qunit-2.0.1.js"></script>
 		<script src="../../src/js/FormValidator.js"></script>
 		<script src="../../tests/unit/FormValidatorTests.js"></script>
