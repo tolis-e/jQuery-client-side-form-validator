@@ -55,10 +55,11 @@
     QUnit.module( "FormValidator Validation" );
 
     QUnit.test( "Validate prototype function exists", function( assert  ) {
-        assert.expect( 1 );
+        assert.expect( 2 );
 
         var formValidator = new app.util.FormValidator();
 
+        assert.ok( formValidator.validate, "function", "Validate exists" );
         assert.equal( typeof formValidator.validate, "function", "Validate prototype function exists" );
     });
 
