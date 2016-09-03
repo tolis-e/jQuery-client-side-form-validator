@@ -38,10 +38,10 @@
 
     /**
      Validates the passed specifications. All form specifications defining the validation rules, must have unique element selectors as property names e.g #email-field. 
-     Specification referring to text fields must have as property value the 'type' and 'rules' properties. The type property must have value equal to 'text'. The 'rules' 
-     property is an array of validation rules and each validation rule consists of 'type' and 'errMsg' properties. The type property should match the name of a regex key 
-     set in the FormValidator constructor. In cases of checkboxes and radio buttons validation the 'rules' property is not used. Only the 'type' and 'errMsg' properties 
-     are used in such cases. The 'type' property must have value equal to 'radio' in case of radio buttons and 'checkbox' in case of checkboxes. In case of select boxes 
+     Specification referring to text fields must contain the 'type' and 'rules' properties. The type property must have value equal to 'text'. The 'rules' 
+     property is an array of validation rules and each validation rule consists of 'type' and 'errMsg' properties. The type property should match the name of a regex
+     property name set in the FormValidator constructor. In cases of checkboxes and radio buttons validation the 'rules' property is not used. 'type' and 'errMsg' properties 
+     are used instead. The 'type' property must have value equal to 'radio' in case of radio buttons and 'checkbox' in case of checkboxes. In case of select boxes 
      the type property must have value equal to 'select'. Additionally, the specification must contain the 'defaultValue' property which defines the default value 
      of the select box so that the library can understand whether the value has been changed or not. A detailed exmaple can be found below, as well as inside the unit 
      tests file. 
