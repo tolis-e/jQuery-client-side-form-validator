@@ -1,9 +1,10 @@
 (function(global) {
 
     /**
-     FormValidator is used to validate client side forms. It receives as input an object containing regular expressions which can be used to validate 'text' fields. 
-     It can also validate 'radio', 'checkbox' and 'select' elements. The library depends on jQuery.
+     FormValidator is used to validate client side forms. It receives as input an object containing regular expressions which can be used to validate 'text' fields. It can also validate 'radio', 'checkbox' and 'select' elements. The library depends on jQuery.
      @status Experimental
+     @memberOf app.util
+     @constructor
      @param {Object} [settings={}] - the settings to configure the validator
      @param {Object} [settings.regex] - the regular expressions used to validate text based elements
      @returns {Object} The created form validator instance
@@ -11,16 +12,16 @@
      // example without using new
      var formValidator = app.util.FormValidator({
         regex: {
-            email: /^[\w-]+([^@,\s\<\>\(\)]*[\w-]+)?\@[\w-]+(\.[\w-]+)*\.[a-z]{2,}$/i,
-            numeric: /^[0-9]+$/
+            numeric: /^[0-9]+$/,
+            notEmpty: /\S+/
         }
      });
 
      // example using new
      var formValidator = new app.util.FormValidator({
         regex: {
-            email: /^[\w-]+([^@,\s\<\>\(\)]*[\w-]+)?\@[\w-]+(\.[\w-]+)*\.[a-z]{2,}$/i,
-            numeric: /^[0-9]+$/
+            numeric: /^[0-9]+$/,
+            notEmpty: /\S+/
         }
      });
      */
@@ -37,33 +38,25 @@
     }
 
     /**
-     Validates the passed specifications. All form specifications defining the validation rules, must have unique element selectors as property names e.g #email-field. 
-     Specification referring to text fields must contain the 'type' and 'rules' properties. The type property must have value equal to 'text'. The 'rules' 
-     property is an array of validation rules and each validation rule consists of 'type' and 'errMsg' properties. The type property should match the name of a regex
-     property name set in the FormValidator constructor. In cases of checkboxes and radio buttons validation the 'rules' property is not used. 'type' and 'errMsg' properties 
-     are used instead. The 'type' property must have value equal to 'radio' in case of radio buttons and 'checkbox' in case of checkboxes. In case of select boxes 
-     the type property must have value equal to 'select'. Additionally, the specification must contain the 'defaultValue' property which defines the default value 
-     of the select box so that the library can understand whether the value has been changed or not. A detailed exmaple can be found below, as well as inside the unit 
-     tests file. 
+     Validates the passed specifications. All form specifications defining the validation rules, must have unique element selectors as property names e.g #email-field. Specification referring to text fields must contain the 'type' and 'rules' properties. The type property must have value equal to 'text'. The 'rules' property is an array of validation rules and each validation rule consists of 'type' and 'errMsg' properties. The type property should match the name of a regex property name set in the FormValidator constructor. In cases of checkboxes and radio buttons validation the 'rules' property is not used. 'type' and 'errMsg' properties are used instead. The 'type' property must have value equal to 'radio' in case of radio buttons and 'checkbox' in case of checkboxes. In case of select boxes the type property must have value equal to 'select'. Additionally, the specification must contain the 'defaultValue' property which defines the default value of the select box so that the library can understand whether the value has been changed or not. A detailed example can be found below, as well as inside the integration tests file. 
      @param {Object} [specs={}] - the specifications to be validated
      @returns {Object} A jQuery Promise having as promise value the whole spec object in case of successful validation or the failed specs otherwise.
      @example
      var formValidator = app.util.FormValidator({
                     regex: {
-                        email: /^[\w-]+([^@,\s\<\>\(\)]*[\w-]+)?\@[\w-]+(\.[\w-]+)*\.[a-z]{2,}$/i,
                         numeric: /^[0-9]+$/,
                         notEmpty: /\S+/
                     }
                 });
      var specs = {
-        '#email-field': {
+        '#postcode': {
             type: 'text',
             rules: [{
                     type: 'notEmpty',
                     errMsg: 'Empty text!'
                 },{
-                    type: 'email',
-                    errMsg: 'Wrong email format!'
+                    type: 'numeric',
+                    errMsg: 'Wrong numeric format!'
                 },
             ]
         },

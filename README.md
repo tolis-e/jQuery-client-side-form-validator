@@ -162,3 +162,7 @@ This will install the versions of the dependencies declared in package.json. Thi
     $ grunt
 
 The produced JavaScript files will be inside the __dist__ directory.
+
+### Documentation
+
+After building the project, the README & API documentation will be produced inside the __docs__ folder.
