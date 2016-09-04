@@ -75,6 +75,16 @@ module.exports = function(grunt) {
                     jshintrc: ".jshintrc"
                 }
             }
+        },
+        jsdoc : {
+            dist : {
+                src: ['src/js/*.js', 'README.md'],
+                options: {
+                    destination: 'doc',
+                    configure: './node_modules/ink-docstrap/template/jsdoc.conf.json',
+                    template: './node_modules/ink-docstrap/template'
+                }
+            }
         }
     });
 
@@ -83,5 +93,6 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-connect');
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-concat');
-    grunt.registerTask('default', ['jshint', 'connect', 'qunit:unit', 'qunit:integration', 'concat', 'uglify:all']);
+    grunt.loadNpmTasks('grunt-jsdoc');
+    grunt.registerTask('default', ['jshint', 'connect', 'qunit:unit', 'qunit:integration', 'concat', 'uglify:all', 'jsdoc']);
 };
