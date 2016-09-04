@@ -101,7 +101,7 @@ var settings = {
 var jQueryPromise = formValidator.validate( formSpecs );
 ```
 
-## Complete Sample Example
+### Sample Example
 
 ```js
 // validator regular experssions needed to validate text fields
