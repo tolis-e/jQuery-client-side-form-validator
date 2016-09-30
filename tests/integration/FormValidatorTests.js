@@ -118,7 +118,6 @@
                 errMsg: 'Not selected checkbox!'
             }
         },
-        specsWhichShouldBeReportedAsPassed = ['#correct-email', '#checkbox-checked'],
         successHandler = function (passedSpecs) {
             assert.ok(true, 'Success handler called');
             assert.deepEqual(passedSpecs, formSpecs, 'Successful specs reported');
